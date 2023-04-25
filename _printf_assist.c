@@ -9,7 +9,7 @@
  */
 int _printf_assist(const char *format, va_list arg, int *i)
 {
-	int r = 0, len_, j;
+	int r = 0, len_, j, t_int;
 	char *t_ch, *null = "(null)";
 
 	switch (*(format + *i + 1))
@@ -39,8 +39,10 @@ int _printf_assist(const char *format, va_list arg, int *i)
 		break;
 	case 'd':
 	case 'i':
-		putchar(va_arg(arg, int));
-		r++;
+		t_int = va_arg(arg, int);
+		t_ch = int_to_string(t_int);
+		r = print_string(t_ch);
+		free(t_ch);
 		break;
 	case '%':
 		putchar(format[*i]);
