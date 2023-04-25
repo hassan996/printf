@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _printf_assist - func generate output depending on format
+ * _printf_assist - Create output based on the selected format
  * @format:contains  zero
  * @arg:contains zero or more dire
  * @i: contain zero or more dire
