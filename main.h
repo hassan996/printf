@@ -6,4 +6,5 @@
 #include <stdlib.h>
 #include <unistd.h>
 int _printf(const char *format, ...);
+int _printf_assist(const char *format, va_list arg, int *i);
 #endif
