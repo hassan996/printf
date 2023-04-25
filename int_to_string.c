@@ -1,36 +1,38 @@
 #include "main.h"
 
 /**
- * int_to_string - converts an integer to a string
- * @n: the integer to convert
+ * print_num - print nums as strings
+ * @num:arg for func
+ * @inc:count and incriment
  *
  * Return: a pointer to the resulting string
  */
-char *int_to_string(int n)
+int print_num(int num, int *inc)
 {
-	char *s;
-	int d, i;
-	int sign = (n < 0);
-
-	d = 1;
-	while (n / 10 != 0)
+	if (num == -2147483648)
 	{
-		n /= 10;
-		d++;
+		putchar('-');
+		putchar('2');
+		*inc = *inc + 2;
+		print_num(147483648,inc);
+		return (0);
 	}
-	s = malloc(sizeof(char) * (d + sign + 1));
-	if (s == NULL)
-		return (NULL);
-	if (sign)
-		s[0] = '-';
-
-	i = d + sign - 1;
-	while (i >= sign)
+	else if (num < 0)
 	{
-		s[i] = (n % 10) + '0';
-		n /= 10;
-		i--;
+		putchar('-');
+		*inc = *inc + 1;
+		num *= (-1);
 	}
-	s[d + sign] = '\0';
-	return (s);
+	if (num >= 10)
+	{
+		print_num(num / 10, inc);
+		putchar((num % 10) + '0');
+		*inc += 1;
+	}
+	else if (num < 10)
+	{
+		putchar(num + '0');
+		*inc = *inc + 1;
+	}
+	return (0);
 }
