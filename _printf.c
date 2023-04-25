@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _printf - prints according to a format
  * @format: pointer to str contain zero
@@ -12,7 +11,7 @@ int _printf(const char *format, ...)
 	int c = 0;
 
 	va_start(arg, format);
-	while (format[i])
+	while (*format != '\0')
 	{
 		if (format[i] == '%')
 		{
@@ -24,19 +23,27 @@ int _printf(const char *format, ...)
 					c++;
 					break;
 				case 's':
-					c += printf("%s", va_arg(arg, char*));
+					char *s = va_arg(arg, char *);
+
+					for (; *s != '\0'; s++)
+					{
+						putchar(*s);
+						c++;
+					}
 					break;
 				case '%':
 					putchar('%');
 					c++;
 					break;
+				case 'd':
+				case 'i':
+					{
+					int number = va_arg(arg, int);
 
-				default:
-					putchar('%');
-					putchar(format[i]);
-					c += 2;
+					printf("%d", number);
+					c++;
 					break;
-			}
+					}
 		}
 		else
 		{
