@@ -22,9 +22,9 @@ int _printf(const char *format, ...)
 				case 'c':
 					putchar(va_arg(arg, int));
 					c++;
-					braek;
+					break;
 				case 's':
-					count += printf("%S", va_arg(arg, char*));
+					c += printf("%s", va_arg(arg, char*));
 					break;
 				case '%':
 					putchar('%');
