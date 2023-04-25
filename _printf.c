@@ -23,14 +23,14 @@ int _printf(const char *format, ...)
 		else if (*(format + i) == '%' && *(format + i + 1) == 'd')
 		{
 			num = va_arg(arg, int);
-			putchar("%d", num);
+			printf("%d", num);
 			c++;
 			i++;
 		}
 		else if (*(format + i) == '%' && *(format + i + 1) == 'i')
 		{
 			num = va_arg(arg,int);
-			putchar("%i", num);
+			printf("%i", num);
 			c++;
 			i++;
 		}
