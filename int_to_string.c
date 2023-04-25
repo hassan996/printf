@@ -18,7 +18,7 @@ char *int_to_string(int n)
 		n /= 10;
 		d++;
 	}
-	s = malloc(sizeof(char) * (digits + sign + 1));
+	s = malloc(sizeof(char) * (d + sign + 1));
 	if (s == NULL)
 		return (NULL);
 	if (sign)

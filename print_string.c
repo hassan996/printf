@@ -11,7 +11,7 @@ int print_string(char *s)
 {
 	int l = 0;
 
-	while (s[l] != ''\0')
+	while (s[l] != '\0')
 	{
 		putchar(s[l]);
 		l++;
