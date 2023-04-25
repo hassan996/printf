@@ -20,20 +20,6 @@ int _printf(const char *format, ...)
 				return (-1);
 			c += _printf_assist(format, arg, &i);
 		}
-		else if (*(format + i) == '%' && *(format + i + 1) == 'd')
-		{
-			num = va_arg(arg, int);
-			printf("%d", num);
-			c++;
-			i++;
-		}
-		else if (*(format + i) == '%' && *(format + i + 1) == 'i')
-		{
-			num = va_arg(arg,int);
-			printf("%i", num);
-			c++;
-			i++;
-		}
 		else
 		{
 			putchar(*(format + i));

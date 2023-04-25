@@ -37,6 +37,11 @@ int _printf_assist(const char *format, va_list arg, int *i)
 		putchar(va_arg(arg, int));
 		r++;
 		break;
+	case 'd':
+	case 'i':
+		putchar(va_arg(arg, int));
+		r++;
+		break;
 	case '%':
 		putchar(format[*i]);
 		r++;
