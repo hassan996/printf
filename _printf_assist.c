@@ -1,52 +1,53 @@
 #include "main.h"
 
 /**
- * _printf_assist - func generate output depending on format
- * @format:contains  zero
- * @arg:contains zero or more dire
- * @i: contain zero or more dire
- * Return:number
+ * _printf_assist - function that generates output based on the given format
+ * @format: a string that contains zero or more directives
+ * @arg: a list of zero or more arguments
+ * @i: a pointer to the current position in the format string
+ *
+ * Return: the number of characters printed
  */
 int _printf_assist(const char *format, va_list arg, int *i)
 {
-	int r = 0, len_, j;
-	char *t_ch, *null = "(null)";
+	int num_chars_printed = 0;
+	char *str_arg;
+	const char *null_str = "(null)";
 
-	switch (*(format + *i + 1))
-	{
-	case 's':
-		t_ch = va_arg(arg, char *);
-		if (t_ch == NULL)
-		{
-			for (len_ = 0; *(null + len_) != '\0'; len_++)
-			{
-				putchar(*(null + len_));
-				r++;
+	switch (format[(*i) + 1]) {
+		case 's':
+			str_arg = va_arg(arg, char *);
+			if (str_arg == NULL) {
+				for (int j = 0; null_str[j] != '\0'; j++) {
+					putchar(null_str[j]);
+					num_chars_printed++;
+				}
+			} else {
+				for (int j = 0; str_arg[j] != '\0'; j++) {
+					putchar(str_arg[j]);
+					num_chars_printed++;
+				}
 			}
-		}
-		else
-		{
-			for (j = 0; t_ch[j] != '\0'; j++)
-			{
-				putchar(t_ch[j]);
-				r++;
-			}
-		}
-		break;
-	case 'c':
-		putchar(va_arg(arg, int));
-		r++;
-		break;
-	case '%':
-		putchar(format[*i]);
-		r++;
-		break;
-	default:
-		putchar(format[*i]);
-		r++;
-		*i -= 1;
-		break;
+			break;
+
+		case 'c':
+			putchar(va_arg(arg, int));
+			num_chars_printed++;
+			break;
+
+		case '%':
+			putchar('%');
+			num_chars_printed++;
+			break;
+
+		default:
+			putchar(format[*i]);
+			num_chars_printed++;
+			(*i)--;
+			break;
 	}
-	*i += 1;
-	return (r);
+
+	(*i)++;
+	return num_chars_printed;
 }
+
