@@ -1,20 +1,22 @@
 #include "main.h"
 
-
 /**
- * print_string - prints a string to stdout
- * @s: the string to print
+ * print_string - prints a given string to the standard output
+ * @s: a pointer to the string to be printed
  *
  * Return: the number of characters printed
  */
 int print_string(char *s)
 {
-	int l = 0;
+    int count = 0;
 
-	while (s[l] != '\0')
-	{
-		putchar(s[l]);
-		l++;
-	}
-	return (l);
+    if (s != NULL)
+    {
+        while (*s)
+        {
+            putchar(*s++);
+            count++;
+        }
+    }
+    return count;
 }
