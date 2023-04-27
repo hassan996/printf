@@ -39,13 +39,16 @@ int _printf_assist(const char *format, va_list arg, int *i)
 		break;
 	case 'd':
 	case 'i':
-		num = va_arg(arg,int);
+		num = va_arg(arg, int);
 		print_num(num, &r);
 		break;
+
 	case '%':
 		putchar(format[*i]);
 		r++;
 		break;
+	case 'b':
+		print_binary;
 	default:
 		putchar(format[*i]);
 		r++;

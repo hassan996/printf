@@ -8,5 +8,5 @@
 int _printf(const char *format, ...);
 int _printf_assist(const char *format, va_list arg, int *i);
 int print_num(int num, int *inc);
-int print_string(char *s);
+int print_binary(va_list arg);
 #endif
