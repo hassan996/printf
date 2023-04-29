@@ -47,8 +47,6 @@ int _printf_assist(const char *format, va_list arg, int *i)
 		putchar(format[*i]);
 		r++;
 		break;
-	case 'b':
-		print_binary;
 	default:
 		putchar(format[*i]);
 		r++;
